@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RUBIVA - Health & Medicine Care</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        body {
+            font-family: 'Hind Siliguri', sans-serif;
+            background-color: #f8fafc;
+            color: #0f172a;
+        }
+        .clean-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
+        }
+        .primary-gradient {
+            background: linear-gradient(135deg, #0284c7 0%, #0d9488 100%);
+            box-shadow: 0 4px 15px rgba(13, 148, 136, 0.25);
+        }
+        .primary-gradient:hover {
+            background: linear-gradient(135deg, #0369a1 0%, #0f766e 100%);
+            box-shadow: 0 6px 20px rgba(13, 148, 136, 0.4);
+        }
+        .offer-gradient {
+            background: linear-gradient(135deg, #fef2f2 0%, #fffbeb 100%);
+            border: 1px solid #fde68a;
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-16">
+
+    <!-- Header / Navbar -->
+    <header class="bg-white/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-200">
+        <div class="max-w-4xl mx-auto px-4 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-2xl bg-teal-500 flex items-center justify-center shadow-lg shadow-teal-500/30 text-white">
+                    <i class="fa-solid fa-heart-pulse text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-extrabold text-slate-800 tracking-tight">RUBIVA</h1>
+                    <p class="text-[10px] text-teal-600 font-semibold tracking-wider uppercase">Health & Medicine Care</p>
+                </div>
+            </div>
+            <a href="#order-form" class="primary-gradient text-white font-bold px-5 py-2.5 rounded-full text-xs sm:text-sm transition transform hover:-translate-y-0.5 flex items-center gap-2">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span>অর্ডার করুন</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-xl mx-auto px-4 pt-6 space-y-6">
+
+        <!-- Flash Sale Countdown Banner -->
+        <div class="offer-gradient rounded-3xl p-5 shadow-sm text-center animate__animated animate__fadeInDown">
+            <div class="flex items-center justify-center gap-2 text-amber-700 text-xs font-bold mb-3 uppercase tracking-wider">
+                <i class="fa-solid fa-fire text-amber-600 animate-bounce"></i> বিশেষ ডিসকাউন্ট অফার শেষ হতে বাকি:
+            </div>
+            <div class="grid grid-cols-3 gap-3 max-w-xs mx-auto mb-3">
+                <div class="bg-white p-2.5 rounded-2xl shadow-sm border border-amber-200">
+                    <span id="hours" class="text-2xl font-extrabold text-slate-900 block">05</span>
+                    <span class="text-[10px] text-slate-500 font-semibold uppercase">ঘণ্টা</span>
+                </div>
+                <div class="bg-white p-2.5 rounded-2xl shadow-sm border border-amber-200">
+                    <span id="minutes" class="text-2xl font-extrabold text-slate-900 block">38</span>
+                    <span class="text-[10px] text-slate-500 font-semibold uppercase">মিঃ</span>
+                </div>
+                <div class="bg-white p-2.5 rounded-2xl shadow-sm border border-amber-200">
+                    <span id="seconds" class="text-2xl font-extrabold text-teal-600 block">07</span>
+                    <span class="text-[10px] text-slate-500 font-semibold uppercase">সেঃ</span>
+                </div>
+            </div>
+            <p class="text-xs text-slate-600 font-medium">অফার নিশ্চিত করতে নিচের ফর্মটি সঠিকভাবেই পূরণ করুন</p>
+        </div>
+
+        <!-- Product Showcase Box -->
+        <div class="clean-card p-4 rounded-3xl space-y-4 animate__animated animate__fadeIn">
+            <div class="relative overflow-hidden rounded-2xl bg-slate-100 aspect-[4/3] flex items-center justify-center">
+                <img id="mainProductImg" src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop" alt="RUBIVA Product" class="w-full h-full object-cover rounded-2xl transition duration-300 hover:scale-105">
+                <span class="absolute top-3 left-3 bg-teal-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-md">RUBIVA Original</span>
+            </div>
+            <!-- Thumbnail selector -->
+            <div class="flex gap-2 justify-center">
+                <button onclick="changeImage('https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop')" class="w-14 h-14 rounded-xl border-2 border-teal-500 overflow-hidden p-0.5 bg-white shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover rounded-lg">
+                </button>
+                <button onclick="changeImage('https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=800&auto=format&fit=crop')" class="w-14 h-14 rounded-xl border-2 border-transparent hover:border-slate-300 overflow-hidden p-0.5 bg-white shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover rounded-lg">
+                </button>
+            </div>
+        </div>
+
+        <!-- Product Features -->
+        <div class="clean-card p-6 rounded-3xl space-y-3">
+            <h3 class="font-extrabold text-slate-800 text-base flex items-center gap-2 mb-4">
+                <i class="fa-solid fa-circle-check text-teal-600"></i> প্রোডাক্টের মূল বৈশিষ্ট্য ও গুণাগুণ:
+            </h3>
+            <ul class="space-y-2.5 text-xs sm:text-sm text-slate-600">
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-teal-600 mt-1"></i>
+                    <span><strong>১০০% প্রিমিয়াম কোয়ালিটি</strong> এবং ল্যাব সার্টিফাইড ফর্মুলা।</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-teal-600 mt-1"></i>
+                    <span>কোনো ক্ষতিকর পার্শ্বপ্রতিক্রিয়া ছাড়াই দীর্ঘস্থায়ী ফলাফল।</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-teal-600 mt-1"></i>
+                    <span>সম্পূর্ণ ন্যাচারাল উপাদান নিয়ে তৈরি এবং স্বাস্থ্যসম্মত।</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                    <i class="fa-solid fa-check text-teal-600 mt-1"></i>
+                    <span>সারাদেশে ক্যাশ অন ডেলিভারি সুবিধা (পণ্য হাতে পেয়ে টাকা দিন)।</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Order Form Section -->
+        <div id="order-form" class="clean-card rounded-3xl p-6 sm:p-8 shadow-xl border border-slate-200">
+            <div class="text-center mb-6">
+                <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-1">অর্ডার করতে আপনার পছন্দমতো প্যাকেজ নির্বাচন করুন</h2>
+                <p class="text-slate-500 text-xs">নিচের ফর্ম থেকে সঠিক তথ্য দিয়ে অর্ডার কনফার্ম করুন</p>
+            </div>
+
+            <form id="rubivaOrderForm" class="space-y-5">
+                
+                <!-- Package Selection Options -->
+                <div class="space-y-3">
+                    <!-- Package 1 -->
+                    <label class="block relative border-2 border-slate-200 rounded-2xl p-4 cursor-pointer hover:border-teal-500 transition package-card bg-slate-50/50">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <input type="radio" name="packageOption" value="1199" data-name="১ পিস (1 Pcs Pack) - ট্রায়াল প্যাক" checked class="text-teal-600 focus:ring-0 w-4 h-4">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">১ পিস (1 Pcs Pack)</h4>
+                                    <span class="text-[11px] text-slate-500 font-medium">ট্রায়াল প্যাক</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-extrabold text-teal-700 text-base block">৳ ৯০০</span>
+                                <span class="text-[11px] text-slate-400 line-through">৳ ১২৯৯</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Package 2 -->
+                    <label class="block relative border-2 border-slate-200 rounded-2xl p-4 cursor-pointer hover:border-teal-500 transition package-card bg-slate-50/50">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <input type="radio" name="packageOption" value="১৮০০" data-name="২ পিস (2 Pcs Pack) - জনপ্রিয় অফার" class="text-teal-600 focus:ring-0 w-4 h-4">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">২ পিস (2 Pcs Pack)</h4>
+                                    <span class="text-[11px] text-teal-600 font-semibold bg-teal-50 px-2 py-0.5 rounded-full inline-block mt-0.5">জনপ্রিয় অফার</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-extrabold text-teal-700 text-base block">৳ ১৮০০</span>
+                                <span class="text-[11px] text-slate-400 line-through">৳ ২৭০০</span>
+                            </div>
+                        </div>
+                    </label>
+
+                    <!-- Package 3 -->
+                    <label class="block relative border-2 border-teal-500 rounded-2xl p-4 cursor-pointer hover:border-teal-600 transition package-card bg-teal-50/30">
+                        <div class="absolute -top-2.5 right-4 bg-teal-600 text-white text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">সর্বাধিক সাশ্রয়ী</div>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <input type="radio" name="packageOption" value=" 2500" data-name="৩ পিস (3 Pcs Super Value) - সর্বোচ্চ সাশ্রয়ী প্যাকেজ" class="text-teal-600 focus:ring-0 w-4 h-4">
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-sm">৩ পিস (3 Pcs Super Value)</h4>
+                                    <span class="text-[11px] text-amber-700 font-semibold bg-amber-50 px-2 py-0.5 rounded-full inline-block mt-0.5">মেগা ডিসকাউন্ট</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <span class="font-extrabold text-teal-700 text-base block">৳  ২৫০০</span>
+                                <span class="text-[11px] text-slate-400 line-through">৳ ৪৮৯৯</span>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Customer Name -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">আপনার নাম *</label>
+                    <input type="text" id="custName" required placeholder="আপনার পুরো নাম লিখুন" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition">
+                </div>
+
+                <!-- Customer Phone -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">মোবাইল নম্বর *</label>
+                    <input type="tel" id="custPhone" required placeholder="১১ ডিজিটের মোবাইল নম্বর দিন" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition">
+                </div>
+
+                <!-- Delivery Address -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">সম্পূর্ণ ঠিকানা *</label>
+                    <textarea id="custAddress" required rows="2" placeholder="জেলা, থানা/উপজেলা এবং এলাকার নাম লিখুন" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-4 py-3 text-sm text-slate-900 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:bg-white transition"></textarea>
+                </div>
+
+                <!-- Delivery Area Selection -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">ডেলিভারি এরিয়া নির্বাচন করুন *</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="flex items-center space-x-2.5 bg-slate-50 border border-slate-300 p-3.5 rounded-xl cursor-pointer hover:border-teal-500 transition">
+                            <input type="radio" name="deliveryArea" value="60" checked class="text-teal-600 focus:ring-0 w-4 h-4">
+                            <span class="text-xs font-semibold text-slate-700">ঢাকার ভেতর (৳৬০)</span>
+                        </label>
+                        <label class="flex items-center space-x-2.5 bg-slate-50 border border-slate-300 p-3.5 rounded-xl cursor-pointer hover:border-teal-500 transition">
+                            <input type="radio" name="deliveryArea" value="120" class="text-teal-600 focus:ring-0 w-4 h-4">
+                            <span class="text-xs font-semibold text-slate-700">ঢাকার বাইরে (৳১২০)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Calculation Summary Box -->
+                <div class="bg-teal-50/70 p-4 rounded-2xl border border-teal-200 space-y-2 text-sm">
+                    <div class="flex justify-between text-slate-700">
+                        <span>পণ্যমূল্য:</span>
+                        <span id="productPriceText" class="font-extrabold text-slate-900">৳ ১১৯৯</span>
+                    </div>
+                    <div class="flex justify-between text-slate-700 border-b border-teal-200 pb-2">
+                        <span>ডেলিভারি চার্জ:</span>
+                        <span id="deliveryFeeText" class="font-extrabold text-teal-700">৳ ৬০</span>
+                    </div>
+                    <div class="flex justify-between text-slate-900 pt-1">
+                        <span class="font-extrabold">সর্বমোট টাকার পরিমাণ:</span>
+                        <span id="grandTotalText" class="font-extrabold text-teal-700 text-lg">৳ ১২৫৯</span>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="submitBtn" class="w-full primary-gradient text-white font-extrabold py-4 rounded-2xl text-base transition transform hover:scale-[1.01] active:scale-95 flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>অর্ডার কনফার্ম করুন (ক্যাশ অন ডেলিভারি)</span>
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="clean-card max-w-md w-full p-8 rounded-3xl text-center animate__animated animate__zoomIn">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl shadow-sm">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">অভিনন্দন! অর্ডার সফল হয়েছে</h3>
+            <p class="text-slate-600 text-sm mb-6">আপনার RUBIVA অর্ডারের তথ্য সফলভাবে জমা হয়েছে। অতি শীঘ্রই আমাদের প্রতিনিধি কল দিয়ে অর্ডারটি কনফার্ম করবেন।</p>
+            <button onclick="closeModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition">ঠিক আছে</button>
+        </div>
+    </div>
+
+    <!-- Firebase Integration & Calculation Script -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBZSJ9A6X0tnoVUOoctAVoYy-nV5XXd-P4",
+            authDomain: "ruviya-5a59b.firebaseapp.com",
+            projectId: "ruviya-5a59b",
+            storageBucket: "ruviya-5a59b.firebasestorage.app",
+            messagingSenderId: "849609434086",
+            appId: "1:849609434086:web:395b067c47fa5daf432c27",
+            measurementId: "G-3EJJZ60PCT"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        let selectedPrice = 1199;
+        let deliveryFee = 60;
+
+        const packageRadios = document.querySelectorAll('input[name="packageOption"]');
+        const deliveryRadios = document.querySelectorAll('input[name="deliveryArea"]');
+        
+        const productPriceText = document.getElementById('productPriceText');
+        const deliveryFeeText = document.getElementById('deliveryFeeText');
+        const grandTotalText = document.getElementById('grandTotalText');
+
+        function updateTotals() {
+            const total = selectedPrice + deliveryFee;
+            productPriceText.innerText = `৳ ${selectedPrice}`;
+            deliveryFeeText.innerText = `৳ ${deliveryFee}`;
+            grandTotalText.innerText = `৳ ${total}`;
+        }
+
+        packageRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                selectedPrice = Number(e.target.value);
+                updateTotals();
+            });
+        });
+
+        deliveryRadios.forEach(rows => {
+            rows.addEventListener('change', (e) => {
+                deliveryFee = Number(e.target.value);
+                updateTotals();
+            });
+        });
+
+        window.changeImage = function(src) {
+            document.getElementById('mainProductImg').src = src;
+        };
+
+        const form = document.getElementById('rubivaOrderForm');
+        const submitBtn = document.getElementById('submitBtn');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> <span>প্রসেসিং হচ্ছে...</span>`;
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+            
+            const selectedRadio = document.querySelector('input[name="packageOption"]:checked');
+            const packageName = selectedRadio ? selectedRadio.getAttribute('data-name') : "RUBIVA Pack";
+            
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) + ' ' + now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            const newOrder = {
+                id: 'RUB-' + Math.floor(100000 + Math.random() * 900000),
+                customerName: name,
+                phone: phone,
+                address: address,
+                productName: packageName,
+                amount: selectedPrice,
+                deliveryFee: deliveryFee,
+                totalAmount: selectedPrice + deliveryFee,
+                status: "Pending",
+                date: formattedDate
+            };
+
+            try {
+                await addDoc(collection(db, "orders"), newOrder);
+                document.getElementById('successModal').classList.remove('hidden');
+                document.getElementById('successModal').classList.add('flex');
+                form.reset();
+                selectedPrice = 1199;
+                deliveryFee = 60;
+                updateTotals();
+            } catch (err) {
+                console.error("Error submitting order: ", err);
+                alert("অর্ডার পাঠাতে সমস্যা হয়েছে! পুনরায় চেষ্টা করুন।");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-lock"></i> <span>অর্ডার কনফার্ম করুন (ক্যাশ অন ডেলিভারি)</span>`;
+            }
+        });
+
+        window.closeModal = function() {
+            document.getElementById('successModal').classList.add('hidden');
+            document.getElementById('successModal').classList.remove('flex');
+        };
+    </script>
+</body>
+</html>
