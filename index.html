@@ -141,7 +141,7 @@
                     <label class="block relative border-2 border-slate-200 rounded-2xl p-4 cursor-pointer hover:border-teal-500 transition package-card bg-slate-50/50">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
-                                <input type="radio" name="packageOption" value="1199" data-name="১ পিস (1 Pcs Pack) - ট্রায়াল প্যাক" checked class="text-teal-600 focus:ring-0 w-4 h-4">
+                                <input type="radio" name="packageOption" value="900" data-name="১ পিস (1 Pcs Pack) - ট্রায়াল প্যাক" checked class="text-teal-600 focus:ring-0 w-4 h-4">
                                 <div>
                                     <h4 class="font-bold text-slate-800 text-sm">১ পিস (1 Pcs Pack)</h4>
                                     <span class="text-[11px] text-slate-500 font-medium">ট্রায়াল প্যাক</span>
@@ -176,14 +176,14 @@
                         <div class="absolute -top-2.5 right-4 bg-teal-600 text-white text-[9px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">সর্বাধিক সাশ্রয়ী</div>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-3">
-                                <input type="radio" name="packageOption" value=" 2500" data-name="৩ পিস (3 Pcs Super Value) - সর্বোচ্চ সাশ্রয়ী প্যাকেজ" class="text-teal-600 focus:ring-0 w-4 h-4">
+                                <input type="radio" name="packageOption" value="2500" data-name="৩ পিস (3 Pcs Super Value) - সর্বোচ্চ সাশ্রয়ী প্যাকেজ" class="text-teal-600 focus:ring-0 w-4 h-4">
                                 <div>
                                     <h4 class="font-bold text-slate-800 text-sm">৩ পিস (3 Pcs Super Value)</h4>
                                     <span class="text-[11px] text-amber-700 font-semibold bg-amber-50 px-2 py-0.5 rounded-full inline-block mt-0.5">মেগা ডিসকাউন্ট</span>
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="font-extrabold text-teal-700 text-base block">৳  ২৫০০</span>
+                                <span class="font-extrabold text-teal-700 text-base block">৳ ২৫০০</span>
                                 <span class="text-[11px] text-slate-400 line-through">৳ ৪৮৯৯</span>
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                         </label>
                         <label class="flex items-center space-x-2.5 bg-slate-50 border border-slate-300 p-3.5 rounded-xl cursor-pointer hover:border-teal-500 transition">
                             <input type="radio" name="deliveryArea" value="120" class="text-teal-600 focus:ring-0 w-4 h-4">
-                            <span class="text-xs font-semibold text-slate-700">ঢাকার বাইরে (১২০)</span>
+                            <span class="text-xs font-semibold text-slate-700">ঢাকার বাইরে (১২০৳)</span>
                         </label>
                     </div>
                 </div>
@@ -227,15 +227,15 @@
                 <div class="bg-teal-50/70 p-4 rounded-2xl border border-teal-200 space-y-2 text-sm">
                     <div class="flex justify-between text-slate-700">
                         <span>পণ্যমূল্য:</span>
-                        <span id="productPriceText" class="font-extrabold text-slate-900">৯০০৳</span>
+                        <span id="productPriceText" class="font-extrabold text-slate-900">৳ ৯০০</span>
                     </div>
                     <div class="flex justify-between text-slate-700 border-b border-teal-200 pb-2">
                         <span>ডেলিভারি চার্জ:</span>
-                        <span id="deliveryFeeText" class="font-extrabold text-teal-700">৮০৳</span>
+                        <span id="deliveryFeeText" class="font-extrabold text-teal-700">৳ ৮০</span>
                     </div>
                     <div class="flex justify-between text-slate-900 pt-1">
                         <span class="font-extrabold">সর্বমোট টাকার পরিমাণ:</span>
-                        <span id="grandTotalText" class="font-extrabold text-teal-700 text-lg">৳ ১২৯৯</span>
+                        <span id="grandTotalText" class="font-extrabold text-teal-700 text-lg">৳ ৯৮০</span>
                     </div>
                 </div>
 
@@ -260,10 +260,14 @@
         </div>
     </div>
 
-    <!-- Firebase Integration & Calculation Script -->
+    <!-- Firebase Integration, Telegram Alert & Calculation Script -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
         import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+        // Telegram Credentials
+        const TELEGRAM_BOT_TOKEN = "8767759451:AAFIZGYysv_5S6YSN6qiXd3dWk3uiRm0jt8";
+        const TELEGRAM_CHAT_ID = "6296479044";
 
         const firebaseConfig = {
             apiKey: "AIzaSyBZSJ9A6X0tnoVUOoctAVoYy-nV5XXd-P4",
@@ -278,8 +282,8 @@
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
-        let selectedPrice = 1199;
-        let deliveryFee = 60;
+        let selectedPrice = 900;
+        let deliveryFee = 80;
 
         const packageRadios = document.querySelectorAll('input[name="packageOption"]');
         const deliveryRadios = document.querySelectorAll('input[name="deliveryArea"]');
@@ -302,8 +306,8 @@
             });
         });
 
-        deliveryRadios.forEach(rows => {
-            rows.addEventListener('change', (e) => {
+        deliveryRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
                 deliveryFee = Number(e.target.value);
                 updateTotals();
             });
@@ -312,6 +316,33 @@
         window.changeImage = function(src) {
             document.getElementById('mainProductImg').src = src;
         };
+
+        // Send Telegram Alert Function
+        async function sendTelegramAlert(order) {
+            const message = `🚨 *নতুন অর্ডার এসেছে!* 🚨\n\n` +
+                            `👤 *নাম:* ${order.customerName}\n` +
+                            `📞 *ফোন:* \`${order.phone}\`\n` +
+                            `📍 *ঠিকানা:* ${order.address}\n` +
+                            `🛍 *প্রোডাক্ট:* ${order.productName}\n` +
+                            `💰 *পণ্য মূল্য:* ৳${order.amount}\n` +
+                            `🚚 *ডেলিভারি চার্জ:* ৳${order.deliveryFee}\n` +
+                            `💵 *মোট টাকা:* ৳${order.totalAmount}\n` +
+                            `🆔 *অর্ডার আইডি:* #${order.id}`;
+
+            try {
+                await fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            } catch (err) {
+                console.error("Telegram Alert Failed:", err);
+            }
+        }
 
         const form = document.getElementById('rubivaOrderForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -346,12 +377,19 @@
             };
 
             try {
+                // ১. Firebase Firestore-এ সেভ করা
                 await addDoc(collection(db, "orders"), newOrder);
+                
+                // ২. টেলিগ্রামে নোটিফিকেশন পাঠানো
+                await sendTelegramAlert(newOrder);
+
+                // ৩. সাকসেস মডেল দেখানো
                 document.getElementById('successModal').classList.remove('hidden');
                 document.getElementById('successModal').classList.add('flex');
+                
                 form.reset();
-                selectedPrice = 1199;
-                deliveryFee = 60;
+                selectedPrice = 900;
+                deliveryFee = 80;
                 updateTotals();
             } catch (err) {
                 console.error("Error submitting order: ", err);
